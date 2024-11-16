@@ -43,6 +43,7 @@ jobs:
           IMAGE_TAG: rc-${{ steps.get-build-number.outputs.build-number }}-${{ steps.get-commit-hash.outputs.commit-hash }}  
         run: |
            docker build -t ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} .
+           docker images ls
            docker push ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
 
     
