@@ -1,0 +1,49 @@
+name: build and push docker image
+
+on:
+  push:
+    branches: [main]
+jobs:
+  build_image:
+    name: Build_image
+    runs-on: ubuntu-22.04
+    env: 
+      REGION_NAME: eu-north-1
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+    permissions:
+      id-token: write
+      contents: read
+      
+    steps:  
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4 
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/githubactions-role
+          role-session-name: GitHub
+          aws-region: ${{ env.REGION_NAME }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2      
+        
+      - name: Get commit hash
+        id: get-commit-hash
+        run: echo "::set-output name=commit-hash::$(git rev-parse --short HEAD)"
+      - name: Get build number
+        id: get-build-number
+        run: echo "::set-output name=build-number::$( github.run_id )"  
+
+      - name: Build image
+        id: build-image
+        env:
+          ECR_REPOSITORY: my-repo
+          ECR_REGISTRY: ${{ secrets.ACCOUNT_ID }}.dkr.ecr.${{ env.REGION_NAME }}.amazonaws.com/${{ env.ECR_REPOSITORY }}
+          IMAGE_TAG: rc-${{ steps.get-build-number.outputs.build-number }}-${{ steps.get-commit-hash.outputs.commit-hash }}  
+        run: |
+           docker build -t ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} .
+           docker push ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+
+    
+       
