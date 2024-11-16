@@ -1,18 +1,18 @@
 <h1> Containerizing a simple Python flask application and pushing to AWS ECR using OIDC</h1>
 	
 - What is needed;
-	AWS account and i created an ECR repository which i will push my image to
+	AWS account and I created an ECR repository which I will push my image to
 	docker installed- Linux (Docker desktop for Mac and Windows users)
 	create an OIDC from the IAM console
-	create an IAM role which is integrated with the created 
+	create an IAM role that is integrated with the created 
 	a Github account for this demonstration
-	
-	- In my project folder I activated a python environment which is best to isolate dependencies
-https://medium.com/@presh_onyee/activating-virtualenv-on-windows-using-git-bash-python-3-7-1-6b4b21640368
+
+- In my project folder I activated a virtual environment, best for dependency isolation.
+
  python -m venv venv
 venv\Scripts\activate
 Or 
-Cd into the scripts and acrivate the environment. Ensure to give a space after the  .
+Cd into the scripts and activate the environment. Do well to give a space after the .
 Don't forget to cd back into your project folder
 
 - Install flask
@@ -25,14 +25,14 @@ Python main.py
 Deactivate 
 CONGRATULATIONS! You have created a basic flask application
 
-- Create a Dockerfile in same directory as application. Build your image
+- Create a Dockerfile in the same directory as the application. Build your image
 	     docker buildx build -t myapp .
 	     docker ls
 
 - Run a container 
 	    docker run -d -p 5000:5000  myapp .
 	
-	Commit to your desired VSC  and in the repo settings>>secrets>> add any secret
+- Commit to your desired VSC  and in the repo settings>>secrets>> add any secret
 	
 Other ideas to enhance your application is to but that is not my focus. The idea is to dockerize an application and push to AWS ECR 
 
