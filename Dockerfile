@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 FROM python:3.9-slim-buster
 
 # Set the working directory to /app
@@ -23,4 +22,4 @@ ENV FLASK_APP=main.py
 CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5000"]
 =======
 
->>>>>>> 0b14453c97f68d20b94d2e128cbcd83b16074fe1
+
