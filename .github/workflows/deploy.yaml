@@ -5,7 +5,7 @@ on:
     branches: [main]
 jobs:
   build_image:
-    name: Build and push Docker Image
+    name: Build and push Image
     runs-on: ubuntu-22.04
     env: 
       REGION_NAME: eu-north-1
