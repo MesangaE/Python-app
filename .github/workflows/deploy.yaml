@@ -26,7 +26,9 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        run: aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 203918858092.dkr.ecr.eu-north-1.amazonaws.com
+        run: |
+          aws ecr get-login-password --region eu-north-1
+          docker login -u AWS -p $(aws ecr get-login-password --region eu-north-1) 203918858092.dkr.ecr.eu-north-1.amazonaws.com
         #run: docker login -u AWS -p $(aws ecr get-login-password --region eu-north-1) 203918858092.dkr.ecr.eu-north-1.amazonaws.com
         # uses: aws-actions/amazon-ecr-login@v2      
         
