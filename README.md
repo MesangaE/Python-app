@@ -1,19 +1,20 @@
 <h1> Containerizing a simple Python flask application and pushing to AWS ECR using OIDC</h1>
 	
-<h2>What is needed;</h2>
+<h3>What is needed;</h3>
 
-	AWS account and I created an ECR repository which I will push my image to
-	docker installed- Linux (Docker desktop for Mac and Windows users)
-	create an OIDC from the IAM console
-	create an IAM role that is integrated with the created 
-	a Github account for this demonstration
+AWS account and I created an ECR repository which I will push my image to
+docker installed- Linux (Docker desktop for Mac and Windows users)
+create an OIDC from the IAM console
+create an IAM role that is integrated with the created 
+a Github account for this demonstration
 
 - In the project folder activate a virtual environment, which is best for dependency isolation.
 
             python -m venv venv
+  
            venv\Scripts\activate
   
-       Or 
+  Or 
         Cd into the scripts and activate the environment. Give a space after the dot
          Don't forget to cd back into your project folder
 
@@ -24,17 +25,17 @@
 - Run the app
 
       Python main.py
-
-Deactivate 
+ check your application locally localhost:port if it's running.
 CONGRATULATIONS! You have created a basic flask application
-
+Deactivate 
 
 - Create a Dockerfile in the same directory as the application. Build your image
   
 	     docker buildx build -t myapp .
+  
 	     docker ls
 
-- Run a container
+- you can run a container to also check that all is working fine
   
 	    docker run -d -p 5000:5000  myapp .
 	
@@ -44,14 +45,14 @@ CONGRATULATIONS! You have created a basic flask application
 I have other ideas to enhance your application, but that is not the focus for now. The focus is to dockerize an application and push it to AWS ECR.
 
 
-    1. Create additional routes for different pages.
-    2. Use Flask templates (Jinja2) to render dynamic HTML content.
-    3. Incorporate a database (e.g., SQLite, MySQL, or PostgreSQL) to store and retrieve data.
-    4. Implement user authentication and authorization.
-    5. Deploy your Flask app to a web hosting service or cloud platform.
+1. Create additional routes for different pages.
+2. Use Flask templates (Jinja2) to render dynamic HTML content.
+3. Incorporate a database (e.g., SQLite, MySQL, or PostgreSQL) to store and retrieve data.
+4. Implement user authentication and authorization.
+5. Deploy your Flask app to a web hosting service or cloud platform.
 
 
-<h2>Building the Flask Web Application, Dockerize and Push to AWS Elastic Container Registry</h2>
+<h2>Building Flask Web Application, Dockerize and Push to AWS Elastic Container Registry</h2>
 
     The real idea of this project was to authenticate securely to our cloud environments with OpenID connect using a GitHub actions workflow. Hardcoding values like 
     access keys in my opinion are violating the least privileged rule by increasing the scope of Github's permission to access AWS resources. Let us walk through
