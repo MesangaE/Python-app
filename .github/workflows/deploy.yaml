@@ -46,7 +46,8 @@ jobs:
           ECR_REGISTRY: ${{ secrets.ACCOUNT_ID }}.dkr.ecr.${{ env.REGION_NAME }}.amazonaws.com/${{ env.ECR_REPOSITORY }}
           IMAGE_TAG: rc-${{ steps.get-build-number.outputs.build-number }}-${{ steps.get-commit-hash.outputs.commit-hash }}  
         run: |
-           docker build -t ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} .
+           docker build -t ${{ env.ECR_REPOSITORY }} .
+           docker tag  ${{ env.ECR_REPOSITORY }} 203918858092.dkr.ecr.eu-north-1.amazonaws.com/my-repo:latest
            docker push 203918858092.dkr.ecr.eu-north-1.amazonaws.com/my-repo:latest
 
     
