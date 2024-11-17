@@ -43,8 +43,8 @@ jobs:
           IMAGE_TAG: ${{ steps.get-commit-hash.outputs.commit-hash }}  
         run: |
            docker build -t ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} .
-           docker tag  ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/my-repo:python-app
-           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/my-repo:latest
+           docker tag  ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/my-repo:01
+           docker push ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/my-repo:01
 
     
        
