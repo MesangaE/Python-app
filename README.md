@@ -3,10 +3,14 @@
 <h3>What is needed;</h3>
 
 AWS account and I created an ECR repository which I will push my image to
+
 docker installed- Linux (Docker desktop for Mac and Windows users)
+
 create an OIDC from the IAM console
+
 create an IAM role that is integrated with the created 
-a Github account for this demonstration
+
+a Github account for the pipeline
 
 - In the project folder activate a virtual environment, which is best for dependency isolation.
 
