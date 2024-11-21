@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Import Flask module
 from flask import Flask
 
@@ -44,4 +44,4 @@ file_menu.add_command(label="Exit", command=root.quit)
 text = Text(root)
 text.pack()
 root.mainloop()
->>>>>>> 0b14453c97f68d20b94d2e128cbcd83b16074fe1
+
