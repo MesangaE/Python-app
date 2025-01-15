@@ -6,7 +6,7 @@ on:
     #branches: [main]
 jobs:
   build_image:
-    name: Build and push Image
+    name: Build and push Image again
     runs-on: ubuntu-22.04
     env: 
       REGION_NAME: eu-north-1
