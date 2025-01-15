@@ -83,7 +83,7 @@ I have other ideas to enhance your application, but that is not the focus for no
 
        githubactions-role = arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/githubactions-role
    
-   Note: give your role permissions awsfullaccess/awsec2containerregistryfullaccess.
+   Note: give your role permissions awsfullaccess/awsec2containerregistryfullaccess/EC2InstanceProfileForImageBuilderECRContainerBuilds.
 
    add this role to your workflow. I would not go into the details of the actions workflow because that is the focus today.
    You can decide to make your entire role a secret in GitHub or just your account ID in the role arn. If your workflow is on a push then
