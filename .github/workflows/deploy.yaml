@@ -2,11 +2,11 @@ name: build and push docker image
 
 on:
   workflow_dispatch:
-  #push:
+  push:
     #branches: [main]
 jobs:
   build_image:
-    name: Build and push Image again
+    name: Build and push the Image again
     runs-on: ubuntu-22.04
     env: 
       REGION_NAME: eu-north-1
